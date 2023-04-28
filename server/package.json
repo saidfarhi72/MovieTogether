@@ -1,0 +1,21 @@
+{
+  "name": "streming",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "express": "^4.18.2",
+    "pino": "^8.11.0",
+    "pino-pretty": "^10.0.0",
+    "socket.io": "^4.6.1",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
