@@ -100,7 +100,28 @@ const handleStart= ()=>{
     }
     const handleReady = ()=>{
       console.log('ready')
+      dispatch({type:EVENTS.SERVER.STOPED_STREAM,payload:true})
+    
+    
+    socket.emit(EVENTS.CLIENT.STOP_STREAM, {roomId,playing:true});
     }
+    const [loading, setLoading] = useState(false);
+  
+    const handleBuffer = () => {
+      setLoading(true);
+      console.log('startburffer')
+    socket.emit(EVENTS.CLIENT.STOP_STREAM, {roomId , palying:false});
+
+    }
+    const handleBufferEnd = () => {
+      setLoading(true);
+      console.log('endbuffer')
+      dispatch({type:EVENTS.SERVER.STOPED_STREAM,payload:true})
+    
+    
+    socket.emit(EVENTS.CLIENT.STOP_STREAM, {roomId,playing:true});
+
+    };
  
 
   if (!roomId) {
@@ -134,6 +155,8 @@ const handleStart= ()=>{
         onPlay={handlePlay}
         onPause={handlePause} 
         onReady={handleReady}
+        onBuffer={handleBuffer}
+        onBufferEnd={handleBufferEnd}
        // onProgress={handleProgress}
         
         onStart={handleStart}
