@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useRef } from "react";
 import { useSockets } from "../store";
 import RoomsContainer from "../components/rooms/rooms";
-import MessagesContainer from "../components/stream/stream";
+import VideoConatiner from "../components/video/VideoConatiner";
 import EVENTS from "../config/events";
+import MessagesContainer from "../components/chat/MessageContainer";
 
 export default function Home() {
   const { state, dispatch } = useSockets();
@@ -60,7 +61,8 @@ export default function Home() {
       {username && (
         <div className={styles.container}>
           <RoomsContainer />
-          <MessagesContainer />
+          <VideoConatiner />
+          <MessagesContainer/>
         </div>
       )}
     </div>

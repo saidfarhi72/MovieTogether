@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player';
 //https://www.dailymotion.com/video/x7xkbwk
 
 //https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
-function MessagesContainer() {
+function VideoConatiner() {
   const { state, dispatch } = useSockets();
   const { room ,streamInfo,playing} = state;
   const {socket,roomId}=room
@@ -172,4 +172,4 @@ const handleStart= ()=>{
   );
 }
 
-export default MessagesContainer;
+export default VideoConatiner;
