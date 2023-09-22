@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./stream.module.css";
-import { useSockets } from "../../store";
-import EVENTS from "../../config/events";
+
 import ReactPlayer from 'react-player';
+import EVENTS from "../config/events";
+import { useSockets } from "../store";
 
 //https://vimeo.com/816731498
 //https://www.dailymotion.com/video/x7xkbwk
@@ -49,16 +49,22 @@ const handleStart= ()=>{
 
 
   const handlePause = () => {
-    dispatch({type:EVENTS.SERVER.STOPED_STREAM,payload:false})
-    socket.emit(EVENTS.CLIENT.STOP_STREAM, {roomId , palying:false});
+    if(playing){
+
+      dispatch({type:EVENTS.SERVER.STOPED_STREAM,payload:false})
+      socket.emit(EVENTS.CLIENT.STOP_STREAM, {roomId , palying:false});
+    }
    
 
   }
   const handlePlay = () => {
-    dispatch({type:EVENTS.SERVER.STOPED_STREAM,payload:true})
-    
-    
-    socket.emit(EVENTS.CLIENT.STOP_STREAM, {roomId,playing:true});
+    if(!playing){
+
+      dispatch({type:EVENTS.SERVER.STOPED_STREAM,payload:true})
+      
+      
+      socket.emit(EVENTS.CLIENT.STOP_STREAM, {roomId,playing:true});
+    }
 
 
     
@@ -87,6 +93,7 @@ const handleStart= ()=>{
 
     const handleSeek = () => {
       const time = playerRef.current.getCurrentTime();
+      console.log(time)
       if(time!==seekto){
 
         socket.emit(EVENTS.CLIENT.CHANGE_TIME_STREAM, {roomId,time});
@@ -129,14 +136,18 @@ const handleStart= ()=>{
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className='h-[100vh] space-y-24 pl-[20%] flex-grow w-[40%] '>
+        <div class="form-control">
+      <label class="label">
+        <span class="label-text">film Url </span>
+      </label>
+      <label class="input-group">
+        <input type="text"ref={urlref} placeholder="url" class="input w-[40rem] input-bordered" />
+        <span onClick={handleUrl} >Watch</span>
+      </label>
+    </div>
       
-      <div className={styles.createRoomWrapper}>
-        <input ref={urlref} placeholder="Room  name" />
-        <button className="cta" onClick={handleUrl}>
-          CREATE ROOM
-        </button>
-      </div>
+    
 
 {
   url &&(
@@ -155,12 +166,12 @@ const handleStart= ()=>{
         onPlay={handlePlay}
         onPause={handlePause} 
         onReady={handleReady}
-        onBuffer={handleBuffer}
-        onBufferEnd={handleBufferEnd}
+       
        // onProgress={handleProgress}
         
         onStart={handleStart}
         onError={handleError}
+        className='object-contain'
       />
       
     </div>)

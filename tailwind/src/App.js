@@ -1,13 +1,14 @@
-import './App.css';
+import { useEffect } from "react";
+import ChatBox from "./components/ChatBox";
+import SendMessage from "./components/SendMessage";
+import EVENTS from "./config/events";
+import { useSockets } from "./store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CreateRom from './pages/CreateRom';
-
-import { useSockets } from './store';
-import { useEffect } from 'react';
-import EVENTS from './config/events';
+import Room from "./pages/Room";
 
 
 function App() {
+
   const { state, dispatch } = useSockets();
   const { room } = state;
   const {socket,roomId,username}=room
@@ -58,20 +59,12 @@ function App() {
     };
   }, [socket]);
 
-
-
-
- 
-
-
   return (
-
-    
     <BrowserRouter >
  
     <Routes>
-    <Route path="/" element={<CreateRom/>} />
-    <Route path="/:id" element={<CreateRom/>} />
+    <Route path="/" element={<Room/>} />
+    <Route path="/:id" element={<Room/>} />
 
 
 
@@ -79,7 +72,6 @@ function App() {
       
     </Routes>
   </BrowserRouter>
-
   );
 }
 

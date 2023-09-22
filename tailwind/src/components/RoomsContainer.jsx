@@ -1,8 +1,9 @@
 import { useRef } from "react";
-import styles from "./rooms.module.css";
-import { useSockets } from "../../store";
-import EVENTS from "../../config/events";
+import styles from "./rooms.css";
+
 import { Link, useNavigate } from "react-router-dom";
+import { useSockets } from "../store";
+import EVENTS from "../config/events";
 
 function RoomsContainer() {
     const { state } = useSockets();
@@ -34,12 +35,8 @@ function RoomsContainer() {
 
   return (
     <nav className={styles.wrapper}>
-      <div className={styles.createRoomWrapper}>
-        <input ref={newRoomRef} placeholder="Room  name" />
-        <button className="cta" onClick={handleCreateRoom}>
-          CREATE ROOM
-        </button>
-      </div>
+     
+   
 
       <ul className={styles.roomList}>
         {Object.keys(rooms).map((key) => {

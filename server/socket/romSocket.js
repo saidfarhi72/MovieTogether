@@ -82,6 +82,7 @@ export const RoomHandler = (socket)=>{
       EVENTS.CLIENT.SEND_ROOM_MESSAGE,
       ({ roomId, message, username }) => {
         const date = new Date();
+        console.log("here here")
 
         console.log(roomId, message, username)
         socket.to(roomId).emit(EVENTS.SERVER.ROOM_MESSAGE, {

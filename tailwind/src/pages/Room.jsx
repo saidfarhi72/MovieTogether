@@ -1,14 +1,16 @@
 
-import styles from "./createRom.module.css";
+import styles from "./room.css";
 import { useParams } from 'react-router-dom';
 import { useEffect, useRef } from "react";
 import { useSockets } from "../store";
-import RoomsContainer from "../components/rooms/rooms";
-import VideoConatiner from "../components/video/VideoConatiner";
-import EVENTS from "../config/events";
-import MessagesContainer from "../components/chat/MessageContainer";
 
-export default function Home() {
+import EVENTS from "../config/events";
+import ChatBox from "../components/ChatBox";
+import SendMessage from "../components/SendMessage";
+import SideBar from "../components/Sidbar";
+import VideoConatiner from "../components/VideoConatiner";
+
+export default function Room() {
   const { state, dispatch } = useSockets();
   const { room } = state;
   const {username,socket}=room
@@ -59,10 +61,14 @@ export default function Home() {
         </div>
       )}
       {username && (
-        <div className={styles.container}>
-          <RoomsContainer />
-          <VideoConatiner />
-          <MessagesContainer/>
+        <div className='flex flex-row'>
+            <SideBar/>
+            <VideoConatiner/>
+            <div className="w-[30%]">
+
+            <ChatBox />
+      <SendMessage />
+            </div>
         </div>
       )}
     </div>
