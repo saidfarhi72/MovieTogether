@@ -36,7 +36,7 @@ function SideBar() {
 
   return (
     
-    <div className="drawer max-w-fit fixed h-screen   top-0 bg-base-100 z-30 lg:drawer-open">
+    <div className="drawer max-w-fit fixed h-screen mt-10  top-0 bg-base-100 z-30 lg:drawer-open">
       
     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
     <div className="drawer-content flex flex-col items-center bg-transparent  justify-center">

@@ -13,7 +13,7 @@ import VideoConatiner from "../components/VideoConatiner";
 export default function Room() {
   const { state, dispatch } = useSockets();
   const { room } = state;
-  const {username,socket}=room
+  const {username,socket,roomId}=room
   const usernameRef = useRef(null);
   const { id } = useParams();
 
@@ -52,23 +52,52 @@ export default function Room() {
     <div>
       {!username && (
         <div className={styles.usernameWrapper}>
-          <div className={styles.usernameInner}>
-            <input placeholder="Username" ref={usernameRef} />
-            <button className="cta" onClick={handleSetUsername}>
-              START
-            </button>
+          <div className="hero min-h-screen bg-base-200">
+          <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className="text-center lg:text-left">
+              <h1 className="text-5xl font-bold">MovieTogether</h1>
+              <p className="py-6">
+            platform for wathcing film with friends
+                .</p>
+            </div>
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+              <div className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input type="text"placeholder="Username" ref={usernameRef} className="input input-bordered" />
+                </div>
+                
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary" onClick={handleSetUsername}>Enter</button>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+          
         </div>
       )}
       {username && (
         <div className='flex flex-row'>
             <SideBar/>
+{
+  
+            roomId &&
+            <>
             <VideoConatiner/>
             <div className="w-[30%]">
 
             <ChatBox />
-      <SendMessage />
+            <SendMessage />
             </div>
+              
+            </>
+
+}
+
+            
         </div>
       )}
     </div>

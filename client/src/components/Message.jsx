@@ -1,13 +1,17 @@
 import React from "react";
+import { useSockets } from "../store";
 
 const Message = ({ message ,id,dashbordMSG}) => {
     console.log(message)
+    const { state, dispatch } = useSockets();
+    const { room } = state;
+    const {roomId}=room
 
-  const handleClick = (event) => {
 
-
-    // Do something with the ID
-  };
+  
+  if (!roomId) {
+    return <div />;
+  }
 
 
 

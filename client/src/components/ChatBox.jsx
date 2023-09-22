@@ -5,19 +5,23 @@ import {  useEffect, useRef } from "react";
 const ChatBox = ({screen,dashbordMSG}) => {
   const { state, dispatch } = useSockets();
   const { room } = state;
-  const {messages}=room
+  const {messages,roomId}=room
+
   const messagesEndRef = useRef();
 
 
+  
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+  };
+  
+  useEffect(scrollToBottom, [messages])
+  
+  
+  if (!roomId) {
+    return <div />;
+}
 
-const scrollToBottom = () => {
-  messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
-};
-
-useEffect(scrollToBottom, [messages])
-
-
- 
 
 
 

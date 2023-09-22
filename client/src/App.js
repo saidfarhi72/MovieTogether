@@ -5,6 +5,7 @@ import EVENTS from "./config/events";
 import { useSockets } from "./store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Room from "./pages/Room";
+import Navbar from "./components/Navbar";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
 
   return (
     <BrowserRouter >
+    <Navbar/>
  
     <Routes>
     <Route path="/" element={<Room/>} />
