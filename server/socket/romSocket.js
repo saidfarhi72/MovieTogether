@@ -82,9 +82,7 @@ export const RoomHandler = (socket)=>{
       EVENTS.CLIENT.SEND_ROOM_MESSAGE,
       ({ roomId, message, username }) => {
         const date = new Date();
-        console.log("here here")
 
-        console.log(roomId, message, username)
         socket.to(roomId).emit(EVENTS.SERVER.ROOM_MESSAGE, {
           message,
           username,
@@ -98,7 +96,6 @@ export const RoomHandler = (socket)=>{
      */
     socket.on(EVENTS.CLIENT.JOIN_ROOM, (roomId) => {
       socket.join(roomId);
-      console.log(stream)
       if(stream[roomId]){
 
         socket.emit(EVENTS.SERVER.ROOM_STREAM, stream[roomId]);
@@ -106,38 +103,30 @@ export const RoomHandler = (socket)=>{
 
 
       socket.emit(EVENTS.SERVER.JOINED_ROOM, roomId);
-      console.log("joined")  
       });
 
       socket.on(EVENTS.CLIENT.CREAT_ROOM_STREAM, ({roomId,time,url}) => {
-        console.log("from nthing", roomId)
         stream[roomId]={
           ...stream[roomId],
 
           time:time,
           url:url
         }
-        console.log("from stream:",stream[roomId])
         socket.to(roomId).emit(EVENTS.SERVER.ROOM_STREAM, stream[roomId]);
 
       
-      console.log("STREAN SEND")  
       });
       socket.on(EVENTS.CLIENT.STOP_STREAM, ({roomId,playing}) => {
-        console.log("from nthing", roomId)
         stream[roomId]={
           ...stream[roomId],
 
           stop:playing
         }
-        console.log("from stream:",stream[roomId])
         socket.to(roomId).emit(EVENTS.SERVER.STOPED_STREAM, playing);
 
       
-      console.log("STREAN SEND")  
       });
       socket.on(EVENTS.CLIENT.WAITING_STREAM, ({roomId,username,waiting}) => {
-        console.log("from nthing", roomId)
         stream[roomId]={
           ...stream[roomId],
 
@@ -147,11 +136,8 @@ export const RoomHandler = (socket)=>{
           console.log('Element already exists in array.');
         } else {
           userwait.push(username);
-          console.log('Element added to array.');
         }
-         console.log("from stream:",stream[roomId])
-
-         console.log("user",userwait)
+    
 
         
            socket.broadcast.emit(EVENTS.SERVER.DONE_WAITING_STREAM, waiting);
@@ -163,20 +149,16 @@ export const RoomHandler = (socket)=>{
          
 
       
-      console.log("waiting send SEND")  
       });
 
       socket.on(EVENTS.CLIENT.CHANGE_TIME_STREAM, ({roomId,time}) => {
-        console.log("from nthing", roomId)
         stream[roomId]={
           ...stream[roomId],
           time:time,
         }
-        console.log("from stream the time is:",stream[roomId].time)
         socket.to(roomId).emit(EVENTS.SERVER.CHANGED_TIME_STREAM, time);
 
       
-      console.log("seek into time SEND")  
       });
       
 

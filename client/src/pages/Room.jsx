@@ -44,8 +44,11 @@ export default function Room() {
   }
 
   useEffect(() => {
-    if (usernameRef)
-      usernameRef.current.value = localStorage.getItem("username") || "";
+    if (!username){
+
+      if (usernameRef)
+        usernameRef.current.value = localStorage.getItem("username") || "";
+    }
   }, []);
 
   return (

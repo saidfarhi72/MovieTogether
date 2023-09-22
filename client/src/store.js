@@ -15,7 +15,8 @@ const initialState = {
   darkMode: Cookies.get('darkMode') === 'ON' ? true : false,
   room: {
     socket: socket,
-    username: '',
+    username:localStorage.getItem("username")?localStorage.getItem("username")
+    : '',
 
     rooms: Cookies.get('rooms')
       ? JSON.parse(Cookies.get('rooms'))
@@ -37,9 +38,6 @@ const initialState = {
   playing : false,
   waiting : true,
   
-  userInfo: Cookies.get('userInfo')
-    ? JSON.parse(Cookies.get('userInfo'))
-    : null,
 };
 
 function reducer(state, action) {
@@ -87,19 +85,9 @@ function reducer(state, action) {
   
         
     case 'username':
+      Cookies.set('username', action.payload, { expires: 7 });
       return { ...state, room: { ...state.room, username: action.payload }};
-    case 'USER_LOGIN':
-      return { ...state, userInfo: action.payload };
-    case 'USER_LOGOUT':
-      return {
-        ...state,
-        userInfo: null,
-        stream: {
-          streamItems: [],
-          rooms: { location: {} },
-          roomId: '',
-        },
-      };
+    
 
     default:
       return state;
