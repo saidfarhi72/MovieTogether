@@ -49,7 +49,7 @@ export default function Room() {
   }, []);
 
   return (
-    <div>
+    <div className="">
       {!username && (
         <div className={styles.usernameWrapper}>
           <div className="hero min-h-screen bg-base-200">
@@ -80,7 +80,7 @@ export default function Room() {
         </div>
       )}
       {username && (
-        <div className='flex flex-row'>
+        <div className='flex flex-row pt-20'>
             <SideBar/>
 {
   

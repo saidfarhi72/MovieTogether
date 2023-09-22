@@ -136,16 +136,19 @@ const handleStart= ()=>{
   }
 
   return (
-    <div className='h-[100vh] space-y-24 pl-[20%] flex-grow w-[40%] '>
-        <div class="form-control">
+    <div className='h-[100vh]  justify-center items-center space-y-24 pl-[20%] flex-grow w-[40%] '>
+      <div className="flex justify-center items-center">
+
+      <div class="form-control ">
       <label class="label">
         <span class="label-text">film Url </span>
       </label>
-      <label class="input-group">
+      <label class="input-group  ">
         <input type="text"ref={urlref} placeholder="url" class="input w-[40rem] input-bordered" />
         <span onClick={handleUrl} >Watch</span>
       </label>
     </div>
+      </div>
       
     
 
