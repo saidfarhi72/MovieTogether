@@ -9,30 +9,15 @@ function RoomsContainer() {
     const { state } = useSockets();
     const { room } = state;
     const {socket,roomId,rooms}=room
-    const navigate=useNavigate()
 
-    const newRoomRef = useRef(null);
-
-  function handleCreateRoom() {
-    //get the room name
-    const roomName = newRoomRef.current.value || "";
-
-    if (!String(roomName).trim()) return;
-
-    // emit room created event
-    socket.emit(EVENTS.CLIENT.CREATE_ROOM, { roomName });
-
-    // set room name input to empty string
-    newRoomRef.current.value = "";
-  }
-
+  
   function handleJoinRoom(key) {
     if (key === roomId) return;
     
 
     socket.emit(EVENTS.CLIENT.JOIN_ROOM, key);
   }
-  
+
 
   return (
     <nav className={styles.wrapper}>

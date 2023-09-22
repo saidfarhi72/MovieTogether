@@ -1,5 +1,5 @@
-import React, { useContext, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import React, {  useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useSockets } from '../store';
 import EVENTS from '../config/events';
 
@@ -7,8 +7,7 @@ function SideBar() {
     const { state } = useSockets();
     const { room } = state;
     const {socket,roomId,rooms}=room
-    const navigate=useNavigate()
-    const [activeButton, setActiveButton] = useState('chatbot'); // Initialize with the default active button
+    const [activeButton, setActiveButton] = useState(''); // Initialize with the default active button
 
 
     const newRoomRef = useRef(null);

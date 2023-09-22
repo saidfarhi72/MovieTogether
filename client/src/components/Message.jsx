@@ -3,7 +3,7 @@ import { useSockets } from "../store";
 
 const Message = ({ message ,id,dashbordMSG}) => {
     console.log(message)
-    const { state, dispatch } = useSockets();
+    const { state } = useSockets();
     const { room } = state;
     const {roomId}=room
 

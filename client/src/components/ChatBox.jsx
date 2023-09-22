@@ -3,7 +3,7 @@ import Message from "./Message";
 import {  useEffect, useRef } from "react";
 
 const ChatBox = ({screen,dashbordMSG}) => {
-  const { state, dispatch } = useSockets();
+  const { state } = useSockets();
   const { room } = state;
   const {messages,roomId}=room
 
