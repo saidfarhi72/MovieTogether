@@ -3,7 +3,7 @@ import ChatBox from "./components/ChatBox";
 import SendMessage from "./components/SendMessage";
 import EVENTS from "./config/events";
 import { useSockets } from "./store";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Room from "./pages/Room";
 import Navbar from "./components/Navbar";
 
@@ -13,6 +13,8 @@ function App() {
   const { state, dispatch } = useSockets();
   const { room } = state;
   const {socket,roomId,username}=room
+  const navigate=useNavigate()
+
   
   useEffect(() => {
     window.onfocus = function () {
@@ -27,6 +29,7 @@ function App() {
 
   socket.on(EVENTS.SERVER.JOINED_ROOM, (value) => {
     dispatch({type:EVENTS.SERVER.JOINED_ROOM,payload:value})
+    navigate(`/${value}`)
 
     dispatch({type:"NEW_JOINED",payload:{}})
   });
@@ -61,7 +64,8 @@ function App() {
   }, [socket]);
 
   return (
-    <BrowserRouter >
+    <div>
+
     <Navbar/>
  
     <Routes>
@@ -73,7 +77,8 @@ function App() {
 
       
     </Routes>
-  </BrowserRouter>
+
+    </div>
   );
 }
 
