@@ -5,8 +5,8 @@ import EVENTS from '../config/events';
 
 function SendMessage() {
     const { state, dispatch } = useSockets();
-    const { room } = state;
-    const {socket,roomId,messages,username}=room
+    const { room,socket ,username} = state;
+    const {roomId}=room
   
   const [message, setNessage] = useState("");
   const [hight, setHight] = useState(49);

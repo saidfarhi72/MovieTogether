@@ -10,8 +10,8 @@ import { useSockets } from "../store";
 //https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 function VideoConatiner() {
   const { state, dispatch } = useSockets();
-  const { room ,streamInfo,playing} = state;
-  const {socket,roomId}=room
+  const { socket,room} = state;
+  const {roomId ,streamInfo,playing}=room
   const {url,seekto,}=streamInfo
   const playerRef = useRef(null);
 

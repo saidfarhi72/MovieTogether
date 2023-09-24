@@ -12,8 +12,8 @@ import VideoConatiner from "../components/VideoConatiner";
 
 export default function Room() {
   const { state, dispatch } = useSockets();
-  const { room } = state;
-  const {username,socket,roomId}=room
+  const { room, username,socket} = state;
+  const {roomId}=room
   const usernameRef = useRef(null);
   const { id } = useParams();
 

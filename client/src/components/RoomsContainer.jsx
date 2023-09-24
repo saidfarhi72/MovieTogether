@@ -7,8 +7,8 @@ import EVENTS from "../config/events";
 
 function RoomsContainer() {
     const { state } = useSockets();
-    const { room } = state;
-    const {socket,roomId,rooms}=room
+    const { room,socket ,rooms} = state;
+    const {roomId}=room
 
   
   function handleJoinRoom(key) {

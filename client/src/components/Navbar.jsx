@@ -1,7 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Navbar() {
+    const navigate = useNavigate();
+    const cleanUp = () => {
+        console.log('clean up')
+    localStorage.clear();
+    window.location.reload();
+    }
+
+   
   return (
         <div className="navbar z-40 border-b border-solid  bg-base-100 fixed ">
   <div className="navbar-start">
@@ -15,7 +23,7 @@ function Navbar() {
   </div>
   
   <div className="navbar-end">
-    <Link to='#' className="btn">Button</Link>
+    <button onClick={cleanUp}  className="btn">Clean up</button>
   </div>
 </div>
   )

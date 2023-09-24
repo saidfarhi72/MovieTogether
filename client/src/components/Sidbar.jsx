@@ -5,8 +5,8 @@ import EVENTS from '../config/events';
 
 function SideBar() {
     const { state } = useSockets();
-    const { room } = state;
-    const {socket,roomId,rooms}=room
+    const { room ,socket,rooms} = state;
+    const {roomId}=room
     const [activeButton, setActiveButton] = useState(''); // Initialize with the default active button
 
 

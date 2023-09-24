@@ -11,8 +11,7 @@ import Navbar from "./components/Navbar";
 function App() {
 
   const { state, dispatch } = useSockets();
-  const { room } = state;
-  const {socket,roomId,username}=room
+  const { room,socket } = state;
   const navigate=useNavigate()
 
   
@@ -62,6 +61,8 @@ function App() {
       socket.off(EVENTS.SERVER.ROOM_MESSAGE);
     };
   }, [socket]);
+
+
 
   return (
     <div>
