@@ -37,7 +37,6 @@ Before you begin, ensure you have met the following requirements:
 
    ```bash
   git clone https://github.com/saidfarhi72/MovieTogether.git
-   ```
 
 # Install frontend dependencies
 
