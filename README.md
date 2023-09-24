@@ -3,12 +3,12 @@
 This web application allows users to create chatrooms, share videos, and chat with friends in real-time. It's built using Node.js, React, and Tailwind CSS.
 
 
-# Home page
+**Home page**
 
 ![Demo Screenshot](/demo/img/home.png)
 
 
-#Chat page
+**Chat page**
 
 ![Demo Screenshot](/demo/img/chat.png)
 
