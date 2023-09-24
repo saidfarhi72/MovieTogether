@@ -18,8 +18,7 @@ This web application allows users to create chatrooms, share videos, and chat wi
 - Create and join chatrooms.
 - Share videos with friends in the chatroom.
 - Real-time chat functionality.
-- User authentication and authorization.
-- [Insert Additional Features Here]
+
 
 ## Technologies Used
 
